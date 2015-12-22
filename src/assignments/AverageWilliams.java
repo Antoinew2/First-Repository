@@ -22,9 +22,12 @@ public class AverageWilliams {
 	    if (ave != 0)
 	    	ave= ave/cnt;
 	    else
-	    System.out.println("Cannot find the average no numbers inputted");
-
-	    System.out.println("The average of " + cnt + " numbers is " + ave );
+	    {
+	    	System.out.println("Cannot find the average no numbers inputted");
+	    System.exit(0);
+	    } 
+	   
+	   System.out.println("The average of " + cnt + " numbers is " + ave );
 	sc.close();
 	}
 
