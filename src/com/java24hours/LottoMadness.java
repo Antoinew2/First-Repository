@@ -5,6 +5,8 @@ import javax.swing.*;
 
 public class LottoMadness extends JFrame
 {
+	LottoEvent lotto = new LottoEvent(this);
+	
 	//set up row1
 	
 	JPanel row1=new JPanel();
@@ -46,6 +48,13 @@ public class LottoMadness extends JFrame
 		GridLayout layout= new GridLayout(5,1,10,10);
 		setLayout(layout);
 		
+		quickpick.addItemListener(lotto);
+		personal.addItemListener(lotto);
+		stop.addActionListener(lotto);
+		play.addActionListener(lotto);
+		reset.addActionListener(lotto);
+		
+		
 		FlowLayout layout1=new FlowLayout(FlowLayout.CENTER,10,10);
 		option.add(quickpick);
 		option.add(personal);
@@ -69,5 +78,58 @@ public class LottoMadness extends JFrame
 			winners[i].setEditable(false);
 			row2.add(winners[i]);
 		}
+		add(row2);
+		
+		FlowLayout layout3 = new FlowLayout(FlowLayout.CENTER,10,10);
+		row3.setLayout(layout3);
+		stop.setEnabled(false);
+		row3.add(stop);
+		row3.add(play);
+		row3.add(reset);
+		add(row3);
+		
+		GridLayout layout4 = new GridLayout(2,3,20,10);
+		row4.setLayout(layout4);
+		row4.add(got3Label);
+		got3.setEditable(false);
+		row4.add(got3);
+		row4.add(got4Label);
+		got4.setEditable(false);
+		row4.add(got4);
+		row4.add(got5Label);
+		got5.setEditable(false);
+		row4.add(got5);
+		row4.add(got6Label);
+		got6.setEditable(false);
+		row4.add(got6);
+		row4.add(drawingLabel);
+		drawings.setEditable(false);
+		row4.add(drawings);
+		row4.add(yearsLabel);
+		years.setEditable(false);
+		row4.add(years);
+		add(row4);
+		
+		setVisible(true);
 	}
+	
+	private static void setLookAndFeel()
+	{
+		try
+		{
+			UIManager.setLookAndFeel
+			("com.sun.java.swung.plaf.nimbus.NimbusLookAndFeel");
+		}
+		catch(Exception exc)
+		{
+			//ignore error
+		}
+	}
+public static void main(String[] arguments)
+{
+LottoMadness.setLookAndFeel();
+LottoMadness frame = new LottoMadness();
+	
 }
+		
+	}
