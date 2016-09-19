@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang=en>
+<head>
+<title> Safer register pagepage</title>
+<meta charset=utf-8>
+<link rel="stylesheet" type="text/css" href="includes.css">
+<style type="text/css">
+#midcol { width:98%; margin:auto;}
+input, select { margin-bottom:5px; }
+h2 { margin-bottom:0;margin-top:5px;}
+h3.content {margin-top:0;}
+.cntr {text-align:center;}
+</style>
+</head>
+<body>
+<div id="container">
+<?php include("includes/register-header.php"); ?>
+<?php include("includes/nav.php"); ?>
+<?php include("includes/info-col-cards.php"); ?>
+<div id ="content"><!-- Start of the registration page content -->
+<?php
+require ('mysqli_connect.php'); //Connect to the database
+//This code inserts a record into the users table
+//Has the form been submitted?
+if ($_SERVER['REQUEST_METHOD'] =='POST') {
+	$errors = array(); //Start an array named errors
+//Trim the title
+$tle = trim($_POST['title']);
+//Strip out html code and apply escaping
+$stripped = mysqli_real_escape_string($dbcon, strip_tags($tle));
+//Get strings lengths
+$strlen = mb_strlen($struooed, 'utf8');
+//Check stripped string
+if( $strlen < 1 ) {
+	$errors[]='You forgot to enter your title
